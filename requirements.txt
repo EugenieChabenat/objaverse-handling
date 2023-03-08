@@ -1,5 +1,5 @@
 objaverse
 random
-pandas as pd
+pandas
 json
 xlwt
