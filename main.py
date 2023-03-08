@@ -74,7 +74,8 @@ def main():
     nb_cat = args.nb_categories
     objects_subset = []
     # TODO 
-  
+    
+  objects_subset = load_categories_from_file(args.subset_categories, args.nb_categories)
   # get a dict with nb_objects per categories 
   print('Constructing a dictionary with UIDs')
   dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
