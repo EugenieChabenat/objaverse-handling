@@ -1,5 +1,4 @@
 objaverse
-random
 pandas
 json
 xlwt
