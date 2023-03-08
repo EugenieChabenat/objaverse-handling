@@ -72,7 +72,7 @@ def main():
   else: 
     print('Choosing {} categories from LVIS randomly...')
     nb_cat = args.nb_categories
-    objects_subset : []
+    objects_subset = []
     # TODO 
   
   # get a dict with nb_objects per categories 
