@@ -50,30 +50,35 @@ def main():
   args = parser.parse_args()
   
   if args.seed is not None: 
+    print('Setting random seed..')
     random.seed(args.seed)
    
   if args.multiprocessing: 
     processes = multiprocessing.cpu_count()
   else: 
     processes = args.nb_processes
+  print('Using {} processes for downloading')
   
   # load LVIS annotations 
+  print('Loading LVIS annotations..')
   lvis_annotations = objaverse.load_annotations()
   
   # load categories
   # from file 
   if args.subset_categories is not None: 
+    print('Loading categories from file')
     objects_subset = load_categories_from_file(args.subset_categories, args.nb_categories)
    # randomly 
   else: 
-    nb_cat = args.nb_categories
     print('Choosing {} categories from LVIS randomly...')
+    nb_cat = args.nb_categories
     # TODO 
   
   # get a dict with nb_objects per categories 
+  print('Constructing a dictionary with UIDs')
   dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
   
-  # save dict 
+  # save dict
   save_dict_as_txt(args.dict_uid, dict_uids)
   
   # download objects
