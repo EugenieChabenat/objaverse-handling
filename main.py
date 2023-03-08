@@ -80,7 +80,7 @@ def main():
   
 # --- functions
 def load_categories_from_file(file_subset, nb_categories): 
-  objects_subset = pd.read_csv(file_subset, delimiter delimiter=';', nrows= nb_categories)
+  objects_subset = pd.read_csv(file_subset, delimiter=';', nrows= nb_categories)
   return objects_subset
 
 def get_dict_uids(lvis_annotations, objects_subset, nb_objects):
