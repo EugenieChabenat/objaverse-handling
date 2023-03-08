@@ -45,6 +45,8 @@ parser.add_argument('-m', '--multiprocessing', default=False, type=bool,
 parser.add_argument('--seed', default=None, type=int,
                     help='seed for initializing random processes')
 def main(): 
+  
+  print('in main')
   args = parser.parse_args()
   
   if args.seed is not None: 
@@ -107,4 +109,6 @@ def download_objects(dict_uids):
     print('Objects downloaded successfully') 
     return None 
 
+if __name__ == '__main__':
+    main()
 
