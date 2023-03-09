@@ -15,7 +15,17 @@ pip install -r requirements.txt
 
 #### When downloading objects for the first time 
 please specify: 
+- the csv file from which to get the names of the categories 
+- the number of categories to download 
+- the number of objects for each categories 
+- the file where to store the dictionary of uids 
+- the name of the worksheet 
+
 
 #### When downloading missing objects 
 please specify: 
+- the file with the dictionary of uids (modified)
+- the file with the removed uids 
+- the file where to store the new dict (or always overwrite?)
+- the worksheet where to store updated files
 
