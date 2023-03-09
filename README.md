@@ -12,3 +12,10 @@ Code for handling Objaverse:
 pip install -r requirements.txt
 ```
 4. The file ```config.ini``` shows the paths used by default. Change any of these variables as necessary. 
+
+#### When downloading objects for the first time 
+please specify: 
+
+#### When downloading missing objects 
+please specify: 
+
