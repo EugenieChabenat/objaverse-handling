@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(description='Objaverse Handling')
 parser.add_argument('-fe', '--final_excel', default='result_files/test_excel_cat.xls', 
                    type=str, help='name and path of the file where the final excel sheet will be stored')
 
-parser.add_argument('-s', '--subset_categories', default=None, 
+parser.add_argument('-s', '--subset_categories', default='objaverse_subset.csv', 
                     type=str, help='name of the doc where to find the categories to download from')
 
 parser.add_argument('-d', '--dict_uid', default= 'result_files/dict_uids.txt', type=str, 
@@ -63,17 +63,18 @@ def main():
   print('Using {} processes for downloading'.format(processes))
   
   # load LVIS annotations 
-  if args.first == True: 
+  """if args.first == True: 
     print('Loading LVIS annotations from objaverse..')
     lvis_annotations = objaverse.load_annotations()
     save_dict_as_txt('lvis_annotations.txt', lvis_annotations)
   else: 
     print('Loading LVIS annotations from file..')
-    lvis_annotations = get_dict_from_txt('lvis_annotations.txt')
+    lvis_annotations = get_dict_from_txt('lvis_annotations.txt')"""
       
   
   # load categories
   # from file 
+  objects_subset = []
   if args.subset_categories is not None: 
     print('Loading categories from file')
     objects_subset = load_categories_from_file(args.subset_categories, args.nb_categories)
@@ -83,11 +84,15 @@ def main():
     nb_cat = args.nb_categories
     objects_subset = []
     # TODO 
-    
-  objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
+  
+  print('objects_subset: \n', objects_subset) 
+  
+  #objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
   # get a dict with nb_objects per categories 
   print('Constructing a dictionary with UIDs')
   dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
+  
+  print('dict_uids: \n', dict_uids)
   
   # save dict
   save_dict_as_txt(args.dict_uid, dict_uids)
