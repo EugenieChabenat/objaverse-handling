@@ -44,6 +44,9 @@ parser.add_argument('-m', '--multiprocessing', default=False, type=bool,
 
 parser.add_argument('--seed', default=None, type=int,
                     help='seed for initializing random processes')
+
+parser.add_argument('-f', '--first', default=False, type=bool, 
+                    help='first time loading the lvis annotations or not')
 def main(): 
   
   print('in main')
@@ -61,7 +64,12 @@ def main():
   
   # load LVIS annotations 
   print('Loading LVIS annotations..')
-  lvis_annotations = objaverse.load_annotations()
+  if args.first: 
+    lvis_annotations = objaverse.load_annotations()
+    save_dict_as_txt('lvis_annotations.txt', lvis_annotations)
+  else: 
+    lvis_annotations = get_dict_from_txt('lvis_annotations.txt')
+      
   
   # load categories
   # from file 
@@ -75,7 +83,7 @@ def main():
     objects_subset = []
     # TODO 
     
-  objects_subset = load_categories_from_file('/Users/chabenateugenie/objaverse/objaverse_subset.csv', args.nb_categories)
+  objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
   # get a dict with nb_objects per categories 
   print('Constructing a dictionary with UIDs')
   dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
@@ -106,6 +114,11 @@ def save_dict_as_txt(file_path, dict_uids):
     json.dump(dict_uids, fp)
   print('Dictionary saved to txt sucessfully')
   return None 
+
+def get_dict_from_txt(file_path): 
+  with open(file_path, 'r') as fp: 
+    load_dict = json.load(fp)
+  return load_dict
 
 def download_objects(dict_uids): 
   for objects_cat, uids_ in dict_uids.items(): 
