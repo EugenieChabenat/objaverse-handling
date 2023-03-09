@@ -19,6 +19,7 @@ processes = 1
 # parse arguments 
 parser = argparse.ArgumentParser(description='Objaverse Handling')
 
+# -- files 
 parser.add_argument('-fe', '--final_excel', default='result_files/test_excel_cat.xls', 
                    type=str, help='name and path of the file where the final excel sheet will be stored')
 
@@ -31,6 +32,10 @@ parser.add_argument('-d', '--dict_uid', default= 'result_files/dict_uids.txt', t
 parser.add_argument('-r', '--file_removed_uids', default=None, type=str, 
                     help='name of the file where to store the dict with removed uids')
 
+parser.add_argument('-mf', '--modified_file', default=None, type=str, 
+                    help='name of the file with uids taht has been modified')
+
+# -- numbers needed 
 parser.add_argument('-nb', '--nb_objects', default=5, type=int, 
                    help='number of objects to download per category of objects')
 
@@ -40,6 +45,7 @@ parser.add_argument('-nc', '--nb_categories', default=10, type=int,
 parser.add_argument('-np', '--nb_processes', default=1, type=int, 
                     help='number of processes to use to download from objaverse')
 
+# -- boolean needed 
 parser.add_argument('-m', '--multiprocessing', default=False, type=bool, 
                     help='whether to use multiprocessing to download from objaverse or not')
 
@@ -58,9 +64,12 @@ parser.add_argument('-sw', '--save_worksheet', default=True, type=bool,
 parser.add_argument('-nw', '--name_worksheet', default=True, type=bool, 
                     help='name and path of the excel worksheet')
 
-parser.add_argument('-mf', '--modified_file', default=None, type=str, 
-                    help='name of the file with uids taht has been modified')
+# -- options: first, modification and redownloading 
+parser.add_argument('-one', '--first_donwload', default=True, type=bool, 
+                    help='name and path of the excel worksheet')
 
+parser.add_argument('-it', '--iterations', default=True, type=bool, 
+                    help='name and path of the excel worksheet')
 
 def main(): 
   
@@ -112,7 +121,7 @@ def main():
   save_dict_as_txt(args.dict_uid, dict_uids)
   
   #---  
-  if args.modifications: 
+  if args.iterations: 
     # todo 
     # reload the modified file 
     modified_uids_dict = reload_file(args.modified_file)
