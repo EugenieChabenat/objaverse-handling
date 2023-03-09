@@ -102,7 +102,7 @@ def main():
   save_dict_as_txt(args.dict_uid, dict_uids)
   
   # download objects
-  download_objects(dict_uids)
+  download_objects(dict_uids, processes)
   
   
 # --- functions
@@ -130,14 +130,15 @@ def get_dict_from_txt(file_path):
     load_dict = json.load(fp)
   return load_dict
 
-def download_objects(dict_uids): 
+def download_objects(dict_uids, processes): 
   for objects_cat, uids_ in dict_uids.items(): 
     objects = objaverse.load_objects(
         uids=uids_,
         download_processes=processes
     )
-    print('Objects downloaded successfully') 
-    return None 
+  print(objects)
+  print('Objects downloaded successfully') 
+  return None 
 
 if __name__ == '__main__':
     main()
