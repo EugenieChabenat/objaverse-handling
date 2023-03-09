@@ -99,8 +99,8 @@ def main():
   
   
   # ----- FIRST TIME = LOAD CATEGORIES 
-  print('FIRST DOWNLOAD')
   if args.first_download: 
+    print('FIRST DOWNLOAD')
     # load categories
     # from file 
     objects_subset = []
@@ -130,8 +130,9 @@ def main():
       download_objects(dict_uids, processes)
   
   # ----- ITERATION: GET CATEGORIES FROM DICT
-  print('ITERATION')
+  
   if args.iterations: 
+    print('ITERATION')
     dict_uids = get_dict_from_txt(file_path=args.modified_file)
     objects_subset = dict_uids.keys()
     
