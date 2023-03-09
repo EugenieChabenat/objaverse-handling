@@ -171,6 +171,20 @@ def main():
   
   
 # --- functions
+
+def save_worksheet_no_download(dict_uids, name_worksheet= 'objects_folder.xls'): 
+  wb = Workbook()
+  
+  # add a sheet 
+  for objects_cat, uids_ in dict_uids.items(): 
+    sheet = wb.add_sheet(objects_cat)
+    
+    # name the columns 
+    sheet.write(0, 0, 'UID', style)
+    sheet.write(0, 1, 'FOLDER NAME', style)
+    
+    
+  return None
 """def load_categories_from_file(file_subset, nb_categories): 
   objects_subset = pd.read_csv(file_subset, delimiter=';', nrows= nb_categories)
   return objects_subset
@@ -204,6 +218,8 @@ def download_objects(dict_uids, processes):
   print(objects)
   print('Objects downloaded successfully') 
   return None """
+
+
 
 if __name__ == '__main__':
     main()
