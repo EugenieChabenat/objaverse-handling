@@ -45,7 +45,7 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
           uids=ids,
           download_processes=processes
       )
-      else: 
+    else: 
         print('no')
         
   print(objects)
