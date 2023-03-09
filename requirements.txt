@@ -1,3 +1,4 @@
 objaverse
 pandas
 xlwt
+xlrd
