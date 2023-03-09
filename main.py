@@ -12,6 +12,7 @@ import warnings
 import time 
 
 from save_worksheet import save_to_worksheet
+from modif_objects import *
 
 processes = 1 
 
@@ -27,7 +28,7 @@ parser.add_argument('-s', '--subset_categories', default='objaverse_subset.csv',
 parser.add_argument('-d', '--dict_uid', default= 'result_files/dict_uids.txt', type=str, 
                     help='name of the file where to store the dictionary of uids')
 
-parser.add_argument('-r', '--removed_uids', default=None, type=str, 
+parser.add_argument('-r', '--file_removed_uids', default=None, type=str, 
                     help='name of the file where to store the dict with removed uids')
 
 parser.add_argument('-nb', '--nb_objects', default=5, type=int, 
@@ -56,6 +57,11 @@ parser.add_argument('-sw', '--save_worksheet', default=True, type=bool,
 
 parser.add_argument('-nw', '--name_worksheet', default=True, type=bool, 
                     help='name and path of the excel worksheet')
+
+parser.add_argument('-mf', '--modified_file', default=None, type=str, 
+                    help='name of the file with uids taht has been modified')
+
+
 def main(): 
   
   print('in main')
@@ -101,11 +107,23 @@ def main():
   
   dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
   
-  print('dict_uids: \n', dict_uids)
   
   # save dict
   save_dict_as_txt(args.dict_uid, dict_uids)
   
+  #---  
+  if args.modifications: 
+    # todo 
+    # reload the modified file 
+    modified_uids_dict = reload_file(args.modified_file)
+    # download missing objects 
+    download_missing_objects(modified_uids_dict, lvis_annotations, args.file_removed_uids)
+    # resave dict with new uids
+    resave_dict(modified_uids_dict)
+    
+    # change the worksheet !!! 
+    
+    
   # download objects
   if args.save_worksheet: 
     print('Downloading objects and saving the paths to folder in a worksheet')
