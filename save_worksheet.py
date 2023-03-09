@@ -6,7 +6,7 @@ style = xlwt.easyxf('font: bold 1')
 before = len('/Users/chabenateugenie/.objaverse/hf-objaverse-v1/glbs/')
 after = len('4c19ae47dbe8468285ee53ff487fe51a')
 
-def save_to_worksheet(dict_uids): 
+def save_to_worksheet(dict_uids, processes): 
   wb = Workbook()
 
   # add a sheet 
