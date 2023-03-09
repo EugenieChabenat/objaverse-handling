@@ -37,7 +37,7 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
               uids=ids,
               download_processes=processes
           )
-          
+  print(objects)
   return None
 
 def resave_dict(new_uids_dict): 
