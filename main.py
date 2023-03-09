@@ -51,6 +51,9 @@ parser.add_argument('-f', '--first', default=False, type=bool,
 parser.add_argument('-mo', '--modifications', default=False, type=bool, 
                     help='reloading after modifying the uids')
 
+parser.add_argument('-sw', '--save_worksheet', default=True, type=bool, 
+                    help='save the paths to the downloaded objects in a excel worksheet')
+
 def main(): 
   
   print('in main')
@@ -102,7 +105,12 @@ def main():
   save_dict_as_txt(args.dict_uid, dict_uids)
   
   # download objects
-  download_objects(dict_uids, processes)
+  if args.save_worksheet: 
+    print('Downloading objects and saving the paths to folder in a worksheet')
+    save_to_worksheet(dict_uids, processes)
+  else: 
+    print('Downloading objects')
+    download_objects(dict_uids, processes)
   
   
 # --- functions
