@@ -1,3 +1,8 @@
+import pandas as pd 
+import json 
+import objaverse
+
+
 # --- functions
 def load_categories_from_file(file_subset, nb_categories): 
   objects_subset = pd.read_csv(file_subset, delimiter=';', nrows= nb_categories)
