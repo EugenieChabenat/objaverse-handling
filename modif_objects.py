@@ -22,28 +22,29 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
   for objects_cat, uids_ in new_uids_dict.items():
     print(objects_cat)
     
-      if len(uids_) < 10 and len(lvis_annotations[objects_cat])>10:
-        print('yes')
-          # nb of objects to replace
-          nb_to_download = 10 - len(uids_) 
+    if len(uids_) < 10 and len(lvis_annotations[objects_cat])>10:
+      here
+      print('yes')
+      # nb of objects to replace
+      nb_to_download = 10 - len(uids_) 
 
-          # get their ids 
-          ids = []
-          new_uids = []
+      # get their ids 
+      ids = []
+      new_uids = []
 
-          while(len(ids)!=nb_to_download): 
-              for elm in range(nb_to_download): 
-                  tmp_id = random.randint(0, len(lvis_annotations[objects_cat]) - 1)
-                  annot = lvis_annotations[objects_cat][tmp_id]
-                  if annot not in removed_uids[objects_cat] and annot not in new_uids_dict[objects_cat]: 
-                      ids.append(annot)
-                      new_uids_dict[objects_cat].append(annot)
+      while(len(ids)!=nb_to_download): 
+          for elm in range(nb_to_download): 
+              tmp_id = random.randint(0, len(lvis_annotations[objects_cat]) - 1)
+              annot = lvis_annotations[objects_cat][tmp_id]
+              if annot not in removed_uids[objects_cat] and annot not in new_uids_dict[objects_cat]: 
+                  ids.append(annot)
+                  new_uids_dict[objects_cat].append(annot)
 
-          # load objects 
-          objects = objaverse.load_objects(
-              uids=ids,
-              download_processes=processes
-          )
+      # load objects 
+      objects = objaverse.load_objects(
+          uids=ids,
+          download_processes=processes
+      )
       else: 
         print('no')
         
