@@ -140,7 +140,7 @@ def main():
     # reload the modified file 
     modified_uids_dict = reload_file(args.modified_file)
     # download missing objects 
-    download_missing_objects(modified_uids_dict, lvis_annotations, args.file_removed_uids, processes)
+    download_missing_objects(modified_uids_dict, lvis_annotations, args.file_removed_uids, processes, args.name_worksheet)
     # resave dict with new uids
     print('re-saving the dictionary')
     resave_dict(modified_uids_dict)
