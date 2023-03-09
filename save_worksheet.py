@@ -25,7 +25,6 @@ def save_to_worksheet(dict_uids, processes):
     
     i = 1 
     for id_, loc in objects.items():
-      her
       name_ = loc[before:]
       sheet.write(i, 0, id_)
       sheet.write(i, 1, name_[:7])
