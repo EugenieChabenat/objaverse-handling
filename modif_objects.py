@@ -8,7 +8,7 @@ def reload_file(file_dict_uids):
 
 def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids): 
   #file_removed_uids = 'removed_uids_test.txt'
-  file_removed_uids = 'result_files/removed_uids.rtf'
+  file_removed_uids = 'result_files/removed_uids.txt'
   with open(file_removed_uids, 'r') as fp: 
       removed_uids = json.load(fp)
 
