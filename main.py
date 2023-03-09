@@ -69,7 +69,7 @@ def main():
   # load LVIS annotations 
   if args.first == True: 
     print('Loading LVIS annotations from objaverse..')
-    lvis_annotations = objaverse.load_annotations()
+    lvis_annotations = objaverse.load_lvis_annotations()
     #save_dict_as_txt('lvis_annotations.txt', lvis_annotations)
   else: 
     print('Loading LVIS annotations from file..')
@@ -89,8 +89,6 @@ def main():
     objects_subset = []
     # TODO 
   
-  print('objects_subset: \n', objects_subset) 
-  print('lvis annotations: \n', lvis_annotations.keys())
   
   #objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
   # get a dict with nb_objects per categories 
@@ -118,8 +116,6 @@ def get_dict_uids(lvis_annotations, objects_subset, nb_objects):
     if nb_objects > row[1]: 
       dict_uids[row[0]] = lvis_annotations[row[0]][:int(row[1])]
     else: 
-      print(dict_uids[row[0]])
-      print(lvis_annotations[row[0]])
       dict_uids[row[0]] = lvis_annotations[row[0]][:nb_objects]
   return dict_uids
 
