@@ -47,7 +47,7 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
           download_processes=processes
       )
       # modify worksheet 
-      modify_worksheet(path_worksheet='result_files/objects_folder.xls', objects_cat, objects, nb_removed=len(removed_uids[objects_cat]))
+      modify_worksheet('result_files/objects_folder.xls', objects_cat, objects, nb_removed=len(removed_uids[objects_cat]))
     else: 
         print('no')
         
