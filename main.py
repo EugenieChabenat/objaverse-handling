@@ -131,7 +131,7 @@ def main():
   
   # ----- ITERATION: GET CATEGORIES FROM DICT
   print('ITERATION')
-  elif args.iterations: 
+  if args.iterations: 
     dict_uids = get_dict_from_txt(file_path=args.modified_file)
     objects_subset = dict_uids.keys()
     
