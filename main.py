@@ -66,7 +66,7 @@ def main():
   if args.first == True: 
     print('Loading LVIS annotations from objaverse..')
     lvis_annotations = objaverse.load_annotations()
-    save_dict_as_txt('lvis_annotations.txt', lvis_annotations)
+    #save_dict_as_txt('lvis_annotations.txt', lvis_annotations)
   else: 
     print('Loading LVIS annotations from file..')
     lvis_annotations = get_dict_from_txt('lvis_annotations.txt')
