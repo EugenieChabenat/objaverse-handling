@@ -63,7 +63,7 @@ def main():
   print('Using {} processes for downloading'.format(processes))
   
   # load LVIS annotations 
-  if args.first: 
+  if args.first == True: 
     print('Loading LVIS annotations from objaverse..')
     lvis_annotations = objaverse.load_annotations()
     save_dict_as_txt('lvis_annotations.txt', lvis_annotations)
