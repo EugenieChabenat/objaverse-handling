@@ -142,9 +142,13 @@ def main():
     # download missing objects 
     download_missing_objects(modified_uids_dict, lvis_annotations, args.file_removed_uids, processes)
     # resave dict with new uids
+    print('re-saving the dictionary')
     resave_dict(modified_uids_dict)
     
     dict_uids = modified_uids_dict
+    
+    print('done')
+  return None
   #objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
   # get a dict with nb_objects per categories 
   
