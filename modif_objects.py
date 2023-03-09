@@ -1,6 +1,7 @@
 import json
 import random
 import objaverse
+from save_worksheet import *
 
 # reload the json file after potential manual modification
 def reload_file(file_dict_uids): 
