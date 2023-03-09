@@ -8,7 +8,7 @@ def reload_file(file_dict_uids):
       new_uids_dict = json.load(fp)
   return new_uids_dict
 
-def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids, processes): 
+def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids, processes, path_worksheet): 
   #file_removed_uids = 'removed_uids_test.txt'
   file_removed_uids = 'result_files/removed_uids.txt'
   with open(file_removed_uids, 'r') as fp: 
@@ -45,6 +45,8 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
           uids=ids,
           download_processes=processes
       )
+      # modify worksheet 
+      modify_worksheet(path_worksheet, object_cat, objects, nb_removed=len(removed_uids[objects_cat])
     else: 
         print('no')
         
