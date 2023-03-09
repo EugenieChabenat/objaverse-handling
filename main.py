@@ -33,7 +33,7 @@ parser.add_argument('-r', '--file_removed_uids', default=None, type=str,
                     help='name of the file where to store the dict with removed uids')
 
 parser.add_argument('-mf', '--modified_file', default=None, type=str, 
-                    help='name of the file with uids taht has been modified')
+                    help='name of the file with uids that has been modified')
 
 # -- numbers needed 
 parser.add_argument('-nb', '--nb_objects', default=5, type=int, 
@@ -65,7 +65,7 @@ parser.add_argument('-nw', '--name_worksheet', default=True, type=bool,
                     help='name and path of the excel worksheet')
 
 # -- options: first, modification and redownloading 
-parser.add_argument('-one', '--first_donwload', default=True, type=bool, 
+parser.add_argument('-one', '--first_download', default=True, type=bool, 
                     help='name and path of the excel worksheet')
 
 parser.add_argument('-it', '--iterations', default=True, type=bool, 
@@ -76,6 +76,7 @@ def main():
   print('in main')
   args = parser.parse_args()
   
+  # -- needed everytime (first or iteration) 
   if args.seed is not None: 
     print('Setting random seed..')
     random.seed(args.seed)
@@ -94,35 +95,44 @@ def main():
   else: 
     print('Loading LVIS annotations from file..')
     lvis_annotations = get_dict_from_txt('lvis_annotations.txt')
-      
   
-  # load categories
-  # from file 
-  objects_subset = []
-  if args.subset_categories is not None: 
-    print('Loading categories from file')
-    objects_subset = load_categories_from_file(args.subset_categories, args.nb_categories)
-   # randomly 
-  else: 
-    print('Choosing {} categories from LVIS randomly...')
-    nb_cat = args.nb_categories
+  
+  # ----- FIRST TIME = LOAD CATEGORIES 
+  if args.first_download: 
+    # load categories
+    # from file 
     objects_subset = []
-    # TODO 
+    if args.subset_categories is not None: 
+      print('Loading categories from file')
+      objects_subset = load_categories_from_file(args.subset_categories, args.nb_categories)
+     # randomly 
+    else: 
+      print('Choosing {} categories from LVIS randomly...')
+      nb_cat = args.nb_categories
+      objects_subset = []
+      # TODO 
+      
+    print('Constructing a dictionary with UIDs')
+    dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
+
+    # save dict
+    save_dict_as_txt(args.dict_uid, dict_uids)
+    
+    
+    # download objects
+    if args.save_worksheet: 
+      print('Downloading objects and saving the paths to folder in a worksheet')
+      save_to_worksheet(dict_uids, processes, args.name_worksheet)
+    else: 
+      print('Downloading objects')
+      download_objects(dict_uids, processes)
   
-  
-  #objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
-  # get a dict with nb_objects per categories 
-  print('Constructing a dictionary with UIDs')
-  
-  dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
-  
-  
-  # save dict
-  save_dict_as_txt(args.dict_uid, dict_uids)
-  
-  #---  
-  if args.iterations: 
-    # todo 
+  # ----- ITERATION: GET CATEGORIES FROM DICT 
+  elif args.iterations: 
+    dict_uids = get_dict_from_txt(file_path=args.modified_file)
+    objects_subset = dict_uids.keys()
+    
+    # or 
     # reload the modified file 
     modified_uids_dict = reload_file(args.modified_file)
     # download missing objects 
@@ -130,16 +140,23 @@ def main():
     # resave dict with new uids
     resave_dict(modified_uids_dict)
     
-    # change the worksheet !!! 
-    
-    
-  # download objects
+    dict_uids = modified_uids_dict
+  #objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
+  # get a dict with nb_objects per categories 
+  
+  """dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
+  # save dict
+  save_dict_as_txt(args.dict_uid, dict_uids)"""
+ 
+  """# download objects
   if args.save_worksheet: 
     print('Downloading objects and saving the paths to folder in a worksheet')
     save_to_worksheet(dict_uids, processes, args.name_worksheet)
   else: 
     print('Downloading objects')
-    download_objects(dict_uids, processes)
+    download_objects(dict_uids, processes)"""
+  
+
   
   
 # --- functions
