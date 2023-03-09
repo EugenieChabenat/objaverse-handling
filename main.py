@@ -13,6 +13,7 @@ import time
 
 from save_worksheet import save_to_worksheet
 from modif_objects import *
+from methods import * 
 
 processes = 1 
 
@@ -160,7 +161,7 @@ def main():
   
   
 # --- functions
-def load_categories_from_file(file_subset, nb_categories): 
+"""def load_categories_from_file(file_subset, nb_categories): 
   objects_subset = pd.read_csv(file_subset, delimiter=';', nrows= nb_categories)
   return objects_subset
 
@@ -192,7 +193,7 @@ def download_objects(dict_uids, processes):
     )
   print(objects)
   print('Objects downloaded successfully') 
-  return None 
+  return None """
 
 if __name__ == '__main__':
     main()
