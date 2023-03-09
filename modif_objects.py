@@ -26,7 +26,13 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
       print('yes')
       # nb of objects to replace
       nb_to_download = 10 - len(uids_) 
-
+      
+      print('nb_to_download: ', nb_to_download)
+      
+      nb_to_download = len(removed_uids[objects_cat])
+      
+      print('nb_to_download: ', nb_to_download)
+  
       # get their ids 
       ids = []
       new_uids = []
