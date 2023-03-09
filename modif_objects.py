@@ -27,7 +27,7 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids)
               for elm in range(nb_to_download): 
                   tmp_id = random.randint(0, len(lvis_annotations[objects_cat]))
                   annot = lvis_annotations[objects_cat][tmp_id]
-                  if annot not in removed_uids[objects_cat] and annot not in new_dict_uids[objects_cat]: 
+                  if annot not in removed_uids[objects_cat] and annot not in new_uids_dict[objects_cat]: 
                       ids.append(annot)
                       new_uids_dict[objects_cat].append(annot)
 
