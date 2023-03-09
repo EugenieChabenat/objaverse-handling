@@ -66,10 +66,10 @@ parser.add_argument('-nw', '--name_worksheet', default='result_files/final_works
                     help='name and path of the excel worksheet')
 
 # -- options: first, modification and redownloading 
-parser.add_argument('-one', '--first_download', default=True, type=bool, 
+parser.add_argument('-one', '--first_download', default=False, type=bool, 
                     help='name and path of the excel worksheet')
 
-parser.add_argument('-it', '--iterations', default=True, type=bool, 
+parser.add_argument('-it', '--iterations', default=False, type=bool, 
                     help='name and path of the excel worksheet')
 
 def main(): 
@@ -99,6 +99,7 @@ def main():
   
   
   # ----- FIRST TIME = LOAD CATEGORIES 
+  print('FIRST DOWNLOAD')
   if args.first_download: 
     # load categories
     # from file 
@@ -128,7 +129,8 @@ def main():
       print('Downloading objects')
       download_objects(dict_uids, processes)
   
-  # ----- ITERATION: GET CATEGORIES FROM DICT 
+  # ----- ITERATION: GET CATEGORIES FROM DICT
+  print('ITERATION')
   elif args.iterations: 
     dict_uids = get_dict_from_txt(file_path=args.modified_file)
     objects_subset = dict_uids.keys()
