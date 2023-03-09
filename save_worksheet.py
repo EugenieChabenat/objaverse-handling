@@ -1,5 +1,10 @@
 import xlwt
 from xlwt import Workbook
+
+import xlrd
+from xlrd import open_workbook 
+from xlutils.copy import copy
+
 import objaverse
 
 style = xlwt.easyxf('font: bold 1')
@@ -29,7 +34,25 @@ def save_to_worksheet(dict_uids, processes, name_worksheet='objects_folder.xls')
       sheet.write(i, 0, id_)
       sheet.write(i, 1, name_[:7])
       i += 1
-
+      
   wb.save('result_files/objects_folder.xls')
   print('worksheet saved')
   return None 
+
+def modify_worksheet(path_worksheet, object_cat, objects, nb_removed):
+  rb = open_workbook(path_worksheet)
+  wb = copy(rb)
+  writable_sheet = wb.get_sheet(object_cat)
+  
+  i = 11 + nb_removed
+  for id_, loc in objects.items():
+      name_ = loc[before:]
+      writable_sheet.write(i, 0, id_)
+      writable_sheet.write(i, 1, name_[:7])
+      i += 1
+  
+  wb.save('result_files/objects_folder.xls')
+  print('worksheet saved')
+  return None 
+
+
