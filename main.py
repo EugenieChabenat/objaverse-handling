@@ -63,13 +63,13 @@ def main():
   print('Using {} processes for downloading'.format(processes))
   
   # load LVIS annotations 
-  """if args.first == True: 
+  if args.first == True: 
     print('Loading LVIS annotations from objaverse..')
     lvis_annotations = objaverse.load_annotations()
     save_dict_as_txt('lvis_annotations.txt', lvis_annotations)
   else: 
     print('Loading LVIS annotations from file..')
-    lvis_annotations = get_dict_from_txt('lvis_annotations.txt')"""
+    lvis_annotations = get_dict_from_txt('lvis_annotations.txt')
       
   
   # load categories
@@ -86,10 +86,12 @@ def main():
     # TODO 
   
   print('objects_subset: \n', objects_subset) 
+  print('lvis annotations: \n', lvis_annotations.keys())
   
   #objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
   # get a dict with nb_objects per categories 
   print('Constructing a dictionary with UIDs')
+  
   dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
   
   print('dict_uids: \n', dict_uids)
