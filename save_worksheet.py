@@ -30,6 +30,6 @@ def save_to_worksheet(dict_uids, processes, name_worksheet='objects_folder.xls')
       sheet.write(i, 1, name_[:7])
       i += 1
 
-  wb.save(name_worksheet)
+  wb.save('objects_folder.xls')
   print('worksheet saved')
   return None 
