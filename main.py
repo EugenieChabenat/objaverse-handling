@@ -47,6 +47,10 @@ parser.add_argument('--seed', default=None, type=int,
 
 parser.add_argument('-f', '--first', default=False, type=bool, 
                     help='first time loading the lvis annotations or not')
+
+parser.add_argument('-mo', '--modifications', default=False, type=bool, 
+                    help='reloading after modifying the uids')
+
 def main(): 
   
   print('in main')
