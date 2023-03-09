@@ -57,7 +57,7 @@ def main():
     processes = multiprocessing.cpu_count()
   else: 
     processes = args.nb_processes
-  print('Using {} processes for downloading')
+  print('Using {} processes for downloading'.format(processes))
   
   # load LVIS annotations 
   print('Loading LVIS annotations..')
