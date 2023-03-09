@@ -1,5 +1,6 @@
 import xlwt
 from xlwt import Workbook
+import objaverse
 
 style = xlwt.easyxf('font: bold 1')
 
