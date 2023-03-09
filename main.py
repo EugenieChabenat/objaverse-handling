@@ -54,6 +54,8 @@ parser.add_argument('-mo', '--modifications', default=False, type=bool,
 parser.add_argument('-sw', '--save_worksheet', default=True, type=bool, 
                     help='save the paths to the downloaded objects in a excel worksheet')
 
+parser.add_argument('-nw', '--name_worksheet', default=True, type=bool, 
+                    help='name and path of the excel worksheet')
 def main(): 
   
   print('in main')
@@ -107,7 +109,7 @@ def main():
   # download objects
   if args.save_worksheet: 
     print('Downloading objects and saving the paths to folder in a worksheet')
-    save_to_worksheet(dict_uids, processes)
+    save_to_worksheet(dict_uids, processes, args.name_worksheet)
   else: 
     print('Downloading objects')
     download_objects(dict_uids, processes)
