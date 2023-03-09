@@ -7,7 +7,7 @@ style = xlwt.easyxf('font: bold 1')
 before = len('/Users/chabenateugenie/.objaverse/hf-objaverse-v1/glbs/')
 after = len('4c19ae47dbe8468285ee53ff487fe51a')
 
-def save_to_worksheet(dict_uids, processes): 
+def save_to_worksheet(dict_uids, processes, name_worksheet='objects_folder.xls'): 
   wb = Workbook()
 
   # add a sheet 
@@ -29,8 +29,7 @@ def save_to_worksheet(dict_uids, processes):
       sheet.write(i, 0, id_)
       sheet.write(i, 1, name_[:7])
       i += 1
-  print(objects)
 
-  wb.save('test_excel_cat.xls')
+  wb.save(name_worksheet)
   print('worksheet saved')
   return None 
