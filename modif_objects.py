@@ -22,7 +22,7 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
   for objects_cat, uids_ in new_uids_dict.items():
     print(objects_cat)
     
-    if len(uids_) < 10 and len(lvis_annotations[objects_cat])>10:
+    if removed_uids[objects_cat] and len(lvis_annotations[objects_cat])>10:
       print('yes')
       # nb of objects to replace
       nb_to_download = 10 - len(uids_) 
