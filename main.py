@@ -62,7 +62,7 @@ parser.add_argument('-mo', '--modifications', default=False, type=bool,
 parser.add_argument('-sw', '--save_worksheet', default=True, type=bool, 
                     help='save the paths to the downloaded objects in a excel worksheet')
 
-parser.add_argument('-nw', '--name_worksheet', default=True, type=bool, 
+parser.add_argument('-nw', '--name_worksheet', default='result_files/final_worksheet.xls', type=str, 
                     help='name and path of the excel worksheet')
 
 # -- options: first, modification and redownloading 
