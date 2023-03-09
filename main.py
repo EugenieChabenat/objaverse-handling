@@ -147,6 +147,9 @@ def main():
     
     dict_uids = modified_uids_dict
     
+    if args.save_worksheet: 
+      print('saving new worksheet')
+    
     print('done')
   return None
   #objects_subset = load_categories_from_file('objaverse_subset.csv', args.nb_categories)
