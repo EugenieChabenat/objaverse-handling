@@ -21,8 +21,6 @@ processes = 1
 parser = argparse.ArgumentParser(description='Objaverse Handling')
 
 # -- files 
-"""parser.add_argument('-fe', '--final_excel', default='result_files/test_excel_cat.xls', 
-                   type=str, help='name and path of the file where the final excel sheet will be stored')"""
 
 parser.add_argument('-s', '--subset_categories', default='objaverse_subset.csv', 
                     type=str, help='name of the doc where to find the categories to download from')
