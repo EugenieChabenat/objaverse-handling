@@ -53,7 +53,7 @@ parser.add_argument('-m', '--multiprocessing', default=False, type=bool,
 parser.add_argument('--seed', default=None, type=int,
                     help='seed for initializing random processes')
 
-parser.add_argument('-f', '--first', default=False, type=bool, 
+parser.add_argument('-f', '--first', default=True, type=bool, 
                     help='first time loading the lvis annotations or not')
 
 """parser.add_argument('-mo', '--modifications', default=False, type=bool, 
@@ -97,6 +97,7 @@ def main():
     print('Loading LVIS annotations from file..')
     lvis_annotations = get_dict_from_txt('lvis_annotations.txt')
   
+  print('lvis: \n', lvis_annotations)
   
   # ----- FIRST TIME = LOAD CATEGORIES 
   if args.first_download: 
@@ -113,7 +114,9 @@ def main():
       nb_cat = args.nb_categories
       objects_subset = []
       # TODO 
-      
+    
+    print('objects subsets: \n', objects_subset)
+    
     print('Constructing a dictionary with UIDs')
     dict_uids = get_dict_uids(lvis_annotations, objects_subset, args.nb_objects)
 
