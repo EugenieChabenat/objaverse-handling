@@ -107,7 +107,7 @@ def main():
     objects_subset = []
     if args.subset_categories is not None: 
       print('Loading categories from file')
-      objects_subset = load_categories_from_file(args.subset_categories, args.nb_categories)
+      objects_subset = load_categories_from_file(args.subset_categories, args.nb_categories-1)
      # randomly 
     else: 
       print('Choosing {} categories from LVIS randomly...')
