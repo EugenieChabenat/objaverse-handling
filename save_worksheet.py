@@ -44,7 +44,7 @@ def save_new_worksheet(path_worksheet, object_cat, objects, nb_removed):
   
   wb = copy(rb)
   # add sheet to workbook with existing sheets
-  sheet = wb.add_sheet(object_cat)
+  sheet = wb.add_sheet(object_cat+'2')
   
   i = 11 + nb_removed
   for id_, loc in objects.items():
