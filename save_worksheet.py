@@ -42,7 +42,7 @@ def save_to_worksheet(dict_uids, processes, name_worksheet='objects_folder.xls')
 def save_new_worksheet(path_worksheet, object_cat, objects, nb_removed): 
   wb = Workbook()
   
-  sheet = wb.add_sheet(objects_cat)
+  sheet = wb.add_sheet(object_cat)
   
   i = 11 + nb_removed
   for id_, loc in objects.items():
