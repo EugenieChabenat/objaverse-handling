@@ -40,7 +40,7 @@ def save_to_worksheet(dict_uids, processes, name_worksheet='objects_folder.xls')
   return None 
 
 def save_new_worksheet(path_worksheet, object_cat, objects, nb_removed): 
-  wb = Workbook()
+  wb = open_workbook(path_worksheet)
   
   sheet = wb.add_sheet(object_cat)
   
