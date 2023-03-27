@@ -47,8 +47,8 @@ def modify_worksheet(path_worksheet, object_cat, objects, nb_removed):
   i = 11 + nb_removed
   for id_, loc in objects.items():
       name_ = loc[before:]
-      writable_sheet.write(i, 0, id_, , style)
-      writable_sheet.write(i, 1, name_[:7], , style)
+      writable_sheet.write(i, 0, id_, style)
+      writable_sheet.write(i, 1, name_[:7], style)
       i += 1
   
   wb.save('result_files/new_objects_folder.xls')
