@@ -39,6 +39,23 @@ def save_to_worksheet(dict_uids, processes, name_worksheet='objects_folder.xls')
   print('worksheet saved')
   return None 
 
+def save_new_worksheet(path_worksheet, object_cat, objects, nb_removed): 
+  wb = Workbook()
+  
+  sheet = wb.add_sheet(objects_cat)
+  
+  i = 11 + nb_removed
+  for id_, loc in objects.items():
+      name_ = loc[before:]
+      writable_sheet.write(i, 0, id_, style)
+      writable_sheet.write(i, 1, name_[:7], style)
+      i += 1
+  
+  wb.save('result_files/new_objects_folder.xls')
+  print('worksheet saved')
+ 
+  return None 
+
 def modify_worksheet(path_worksheet, object_cat, objects, nb_removed):
   rb = open_workbook(path_worksheet)
   wb = copy(rb)
