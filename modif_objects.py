@@ -23,6 +23,8 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
   for objects_cat, uids_ in new_uids_dict.items():
     print(objects_cat)
     
+    print('removed: ', removed_uids[objects_cat]) 
+    print('lvis: ', lvis_annotations[objects_cat]))
     if removed_uids[objects_cat] and len(lvis_annotations[objects_cat])>10:
       print('yes')
       # nb of objects to replace
