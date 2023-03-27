@@ -40,8 +40,10 @@ def save_to_worksheet(dict_uids, processes, name_worksheet='objects_folder.xls')
   return None 
 
 def save_new_worksheet(path_worksheet, object_cat, objects, nb_removed): 
-  wb = open_workbook(path_worksheet)
+  rb = open_workbook(path_worksheet)
   
+  wb = copy(rb)
+  # add sheet to workbook with existing sheets
   sheet = wb.add_sheet(object_cat)
   
   i = 11 + nb_removed
