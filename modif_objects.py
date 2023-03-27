@@ -31,11 +31,13 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
 
       while(len(ids)!=nb_to_download): 
           for elm in range(nb_to_download): 
-              tmp_id = random.randint(0, len(lvis_annotations[objects_cat]) - 1)
-              annot = lvis_annotations[objects_cat][tmp_id]
-              if annot not in removed_uids[objects_cat] and annot not in new_uids_dict[objects_cat]: 
-                  ids.append(annot)
-                  new_uids_dict[objects_cat].append(annot)
+            print('elm: ', elm)
+            tmp_id = random.randint(0, len(lvis_annotations[objects_cat]) - 1)
+            print('tmp_id: ', tmp_id)
+            annot = lvis_annotations[objects_cat][tmp_id]
+            if annot not in removed_uids[objects_cat] and annot not in new_uids_dict[objects_cat]: 
+              ids.append(annot)
+              new_uids_dict[objects_cat].append(annot)
 
       # load objects 
       objects = objaverse.load_objects(
