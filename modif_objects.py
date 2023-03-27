@@ -14,23 +14,17 @@ def download_missing_objects(new_uids_dict, lvis_annotations, file_removed_uids,
   file_removed_uids = 'removed_uids_new.txt'
   with open(file_removed_uids, 'r') as fp: 
       removed_uids = json.load(fp)
-  
-  print('removed uids: \n', removed_uids)
-  print('\nnew uids dict: \n', new_uids_dict)
-  
+ 
   
   # re-download missing objects 
   for objects_cat, uids_ in new_uids_dict.items():
     print(objects_cat)
-    
-    print('removed: ', removed_uids[objects_cat]) 
-    print('lvis: ', lvis_annotations[objects_cat])
     if removed_uids[objects_cat] and len(lvis_annotations[objects_cat])>10:
       print('yes')
       # nb of objects to replace
       
       nb_to_download = len(removed_uids[objects_cat])
-        
+      print('nb to download: ', nb_to_download)
       # get their ids 
       ids = []
       new_uids = []
