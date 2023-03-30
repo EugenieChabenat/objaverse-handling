@@ -29,3 +29,6 @@ One has to specify:
 - the file where to store the new dictionary of uids
 - the worksheet where to store updated location of the downloaded models.
 
+##### Note
+In this version, the code takes objects iteratively, one after the other in the order they appear in the LVIS annotations dictionary. 
+The selection is not randomized.
