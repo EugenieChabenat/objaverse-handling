@@ -1,7 +1,7 @@
 # objaverse-handling
-Code for handling Objaverse: 
-- downloading from categories
-- creating a subset of 3D images 
+Code for creating a dataset with 3D models from Objaverse. It allows to: 
+- download a given number of objects from chosen categories
+- creating a subset of 3D models 
 - keeping track of ids and metadata
 
 ## Usage 
@@ -14,18 +14,18 @@ pip install -r requirements.txt
 4. The file ```config.ini``` shows the paths used by default. Change any of these variables as necessary. 
 
 #### When downloading objects for the first time 
-please specify: 
-- the csv file from which to get the names of the categories 
+One has to specify: 
+- the file from which to get the names of the categories (.csv format)
 - the number of categories to download 
-- the number of objects for each categories 
+- the number of objects to download from each category
 - the file where to store the dictionary of uids 
-- the name of the worksheet 
+- the name of the worksheet in which will be stored the location of the downloaded models. 
 
 
 #### When downloading missing objects 
-please specify: 
-- the file with the dictionary of uids (modified)
-- the file with the removed uids 
-- the file where to store the new dict (or always overwrite?)
-- the worksheet where to store updated files
+One has to specify: 
+- the file with the dictionary of uids (that has been modified when curating the models) 
+- the file with the removed uids (created when curating the models)
+- the file where to store the new dictionary of uids
+- the worksheet where to store updated location of the downloaded models.
 
