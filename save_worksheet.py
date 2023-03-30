@@ -46,6 +46,7 @@ def save_new_worksheet(path_worksheet, object_cat, objects, nb_removed):
   # add sheet to workbook with existing sheets
   sheet = wb.add_sheet(object_cat+'2')
   
+  # change 11 by the number of objects that were downloaded during the first iteration
   i = 11 + nb_removed
   for id_, loc in objects.items():
       name_ = loc[before:]
