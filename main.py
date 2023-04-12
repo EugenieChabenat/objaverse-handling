@@ -95,7 +95,7 @@ def main():
     print('Loading LVIS annotations from file..')
     lvis_annotations = get_dict_from_txt('lvis_annotations.txt')
   
-  print('lvis: \n', lvis_annotations)
+  #print('lvis: \n', lvis_annotations)
   
   # ----- FIRST TIME = LOAD CATEGORIES 
   if args.first_download: 
