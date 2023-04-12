@@ -35,10 +35,10 @@ parser.add_argument('-mf', '--modified_file', default=None, type=str,
                     help='name of the file with uids that has been modified')
 
 # -- numbers needed 
-parser.add_argument('-nb', '--nb_objects', default=5, type=int, 
+parser.add_argument('-nb', '--nb_objects', default=15, type=int, 
                    help='number of objects to download per category of objects')
 
-parser.add_argument('-nc', '--nb_categories', default=10, type=int, 
+parser.add_argument('-nc', '--nb_categories', default=30, type=int, 
                    help='number of categories of objects to download from objaverse')
 
 parser.add_argument('-np', '--nb_processes', default=1, type=int, 
