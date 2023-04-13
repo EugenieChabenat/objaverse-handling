@@ -12,7 +12,7 @@ def get_dict_uids(lvis_annotations, objects_subset, nb_objects):
   dict_uids = {}
   for index, row in objects_subset.iterrows(): 
     if nb_objects > row[1]: 
-      dict_uids[row[0]] = lvis_annotations[10+row[0]][:10+int(row[1])]
+      dict_uids[row[0]] = lvis_annotations[10+row[0]][:int(10+row[1])]
     else: 
       dict_uids[row[0]] = lvis_annotations[10+row[0]][:10+nb_objects]
   return dict_uids
