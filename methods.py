@@ -12,9 +12,9 @@ def get_dict_uids(lvis_annotations, objects_subset, nb_objects):
   dict_uids = {}
   for index, row in objects_subset.iterrows(): 
     if nb_objects > row[1]: 
-      dict_uids[row[0]] = lvis_annotations[row[0]][10, :int(10+row[1])]
+      dict_uids[row[0]] = lvis_annotations[row[0]][10:int(12+row[1])]
     else: 
-      dict_uids[row[0]] = lvis_annotations[row[0]][:10+nb_objects]
+      dict_uids[row[0]] = lvis_annotations[row[0]][10:12+nb_objects]
   return dict_uids
 
 def save_dict_as_txt(file_path, dict_uids): 
