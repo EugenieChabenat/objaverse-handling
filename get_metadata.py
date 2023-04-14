@@ -43,7 +43,7 @@ def main():
           print(data)
           f.write(key + ': ')
           if data is not None: 
-            f.write(data)
+            f.write(str(data))
           
       
 
