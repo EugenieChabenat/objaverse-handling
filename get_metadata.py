@@ -31,25 +31,19 @@ def main():
     if args.filename is None: 
       args.file_name = f'metadata{args.uid}.txt'
     with open(args.file_name, 'w') as f: 
-      for line in line: 
-        f.write(line)
-        f.write('\n')
   
-    # pretty print
-    for uid, content in annotations.items(): 
-      print('uid: ', uid)
-      f.write(uid)
+      # pretty print 
+      # save in file 
+      for uid, content in annotations.items(): 
+        print('uid: ', uid)
+        f.write(uid)
     
-      for key, data in content.items(): 
-        print(key, ': ')
-        print(data)
-        f.write(key + ': ')
-        f.write(data)
+        for key, data in content.items(): 
+          print(key, ': ')
+          print(data)
+          f.write(key + ': ')
+          f.write(data)
       
-    
-  
-  # save in file 
-
 
     
 main()
