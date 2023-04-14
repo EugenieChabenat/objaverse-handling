@@ -20,11 +20,11 @@ def main():
   
   uids = objaverse.load_uids()
   
-  # loading LVIS annotations 
-  print('Loading LVIS annotations from objaverse...')
-  lvis_annotations = objaverse.load_lvis_annotations()
+  # loading annotations 
+  print('Loading annotations from objaverse...')
+  annotations = objaverse.load_annotations(args.uid)
   
-  print('keys: ',lvis_annotations[args.category])
+  print('keys: ',annotations)
   
   if args.category: 
     metadata = lvis_annotations[args.category][args.uid]
