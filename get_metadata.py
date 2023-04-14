@@ -36,6 +36,7 @@ def main():
       # save in file 
       for uid, content in annotations.items(): 
         print('uid: ', uid)
+        f.write('\n')
         f.write(uid)
         f.write('\n')
     
