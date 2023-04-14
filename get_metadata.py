@@ -42,7 +42,9 @@ def main():
           print(key, ': ')
           print(data)
           f.write(key + ': ')
-          f.write(data)
+          if data is not None: 
+            f.write(data)
+          
       
 
     
