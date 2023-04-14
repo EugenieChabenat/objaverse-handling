@@ -27,3 +27,6 @@ def main():
   if args.category: 
     metadata = lvis_annotations[args.category][args.uid]
     print('metadata')
+
+    
+main()
