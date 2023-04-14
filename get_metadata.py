@@ -25,12 +25,14 @@ def main():
   annotations = objaverse.load_annotations([args.uid])
   
   # pretty print
-  print('keys: ',annotations)
-  for key, value in annotations.items(): 
+  for uid, content in annotations.items(): 
     print('key: ', key)
-    print('value', value)
     
-    print('')
+    for key, data in content.items(): 
+      print(key, ': \n')
+      print(data)
+    
+      print('')
     
   
   # save in file 
