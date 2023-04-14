@@ -22,7 +22,7 @@ def main():
   
   # loading annotations 
   print('Loading annotations from objaverse...')
-  annotations = objaverse.load_annotations(args.uid)
+  annotations = objaverse.load_annotations([args.uid])
   
   print('keys: ',annotations)
   
