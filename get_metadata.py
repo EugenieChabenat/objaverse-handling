@@ -28,7 +28,7 @@ def main():
   annotations = objaverse.load_annotations([args.uid])
   
   if args.save:
-    if args.filename is None: 
+    if args.file_name is None: 
       args.file_name = f'metadata{args.uid}.txt'
     with open(args.file_name, 'w') as f: 
   
