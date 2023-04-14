@@ -37,13 +37,16 @@ def main():
       for uid, content in annotations.items(): 
         print('uid: ', uid)
         f.write(uid)
+        f.write('\n')
     
         for key, data in content.items(): 
           print(key, ': ')
           print(data)
           f.write(key + ': ')
+          f.write('\n')
           if data is not None: 
             f.write(str(data))
+            f.write('\n')
           
       
 
