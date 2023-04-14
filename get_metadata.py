@@ -35,15 +35,17 @@ def main():
         f.write(line)
         f.write('\n')
   
-  # pretty print
-  for uid, content in annotations.items(): 
-    print('uid: ', uid)
+    # pretty print
+    for uid, content in annotations.items(): 
+      print('uid: ', uid)
+      f.write(uid)
     
-    for key, data in content.items(): 
-      print(key, ': \n')
-      print(data)
-    
-      print('')
+      for key, data in content.items(): 
+        print(key, ': ')
+        print(data)
+        f.write(key + ': ')
+        f.write(data)
+      
     
   
   # save in file 
