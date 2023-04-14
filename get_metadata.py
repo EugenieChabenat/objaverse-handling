@@ -24,11 +24,17 @@ def main():
   print('Loading annotations from objaverse...')
   annotations = objaverse.load_annotations([args.uid])
   
+  # pretty print
   print('keys: ',annotations)
+  for key, value in annotations.items(): 
+    print('key: ', key)
+    print('value', value)
+    
+    print('')
+    
   
-  if args.category: 
-    metadata = lvis_annotations[args.category][args.uid]
-    print('metadata')
+  # save in file 
+
 
     
 main()
