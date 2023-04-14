@@ -24,6 +24,8 @@ def main():
   print('Loading LVIS annotations from objaverse...')
   lvis_annotations = objaverse.load_lvis_annotations()
   
+  print('keys: ', lvis_annotations.keys())
+  
   if args.category: 
     metadata = lvis_annotations[args.category][args.uid]
     print('metadata')
