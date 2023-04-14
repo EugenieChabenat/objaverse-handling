@@ -26,7 +26,7 @@ def main():
   
   # pretty print
   for uid, content in annotations.items(): 
-    print('key: ', key)
+    print('uid: ', uid)
     
     for key, data in content.items(): 
       print(key, ': \n')
